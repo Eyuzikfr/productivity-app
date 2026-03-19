@@ -11,7 +11,7 @@ Tech stack:
 
 - Frontend: React
 - Backend: PHP
--Database: mysql
+- Database: mysql
 
 authors: Eyzik Chhunju, Grishmika Adhikari, Arun Basnet
 

@@ -11,4 +11,4 @@ Tech stack:
 
 - Frontend: React
 - Backend: PHP
--Database: mysql
+- Database: mysql

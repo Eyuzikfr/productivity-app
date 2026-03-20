@@ -6,12 +6,22 @@ export default function App() {
 
   const addTodo = () => {
     if (task.trim() === "") return;
-    setTodos([...todos, task]);
+    setTodos([...todos, { text: task, completed: false }]);
     setTask("");
   };
 
   const deleteTodo = (indexToDelete) => {
     setTodos(todos.filter((_, index) => index !== indexToDelete));
+  };
+
+  const toggleCompleted = (indexToToggle) => {
+    setTodos(
+      todos.map((todo, index) =>
+        index === indexToToggle
+          ? { ...todo, completed: !todo.completed }
+          : todo,
+      ),
+    );
   };
 
   return (
@@ -29,8 +39,17 @@ export default function App() {
 
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>
-            {todo} <button onClick={() => deleteTodo(index)}>❌</button>
+          <li
+            key={index}
+            style={{
+              textDecoration: todo.completed ? "line-through" : "none",
+            }}
+          >
+            {todo.text}
+            <button onClick={() => toggleCompleted(index)}>
+              Mark As {todo.completed ? "Incomplete" : "Completed"}
+            </button>
+            <button onClick={() => deleteTodo(index)}>❌</button>
           </li>
         ))}
       </ul>

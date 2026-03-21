@@ -1,3 +1,7 @@
 <?php
-echo "Backend is running";
+$title= $_GET['title'];
+$data= [
+    "received_title"=> $title
+];
+echo json_encode($data);
 ?>

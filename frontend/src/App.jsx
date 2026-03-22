@@ -3,10 +3,14 @@ import { useState } from "react";
 export default function App() {
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState([]);
+  const [taskDeadline, setTaskDeadline] = useState("");
 
   const addTodo = () => {
     if (task.trim() === "") return;
-    setTodos([...todos, { text: task, completed: false }]);
+    setTodos([
+      ...todos,
+      { text: task, completed: false, deadline: taskDeadline },
+    ]);
     setTask("");
   };
 
@@ -34,6 +38,11 @@ export default function App() {
         onChange={(e) => setTask(e.target.value)}
         placeholder="Enter a task"
       />
+      <input
+        type="date"
+        value={taskDeadline}
+        onChange={(e) => setTaskDeadline(e.target.value)}
+      />
 
       <button onClick={addTodo}>Add</button>
 
@@ -45,7 +54,7 @@ export default function App() {
               textDecoration: todo.completed ? "line-through" : "none",
             }}
           >
-            {todo.text}
+            {todo.text} - {todo.deadline || "No deadline"}
             <button onClick={() => toggleCompleted(index)}>
               Mark As {todo.completed ? "Incomplete" : "Completed"}
             </button>

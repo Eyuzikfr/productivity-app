@@ -12,6 +12,7 @@ export default function App() {
       { text: task, completed: false, deadline: taskDeadline },
     ]);
     setTask("");
+    setTaskDeadline("mm-dd-yyyy");
   };
 
   const deleteTodo = (indexToDelete) => {
